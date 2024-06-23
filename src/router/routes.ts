@@ -32,4 +32,13 @@ export const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
+  //用于隐藏页面
+  {
+    path: "/hide",
+    name: "隐藏页面",
+    component: HomeView,
+    meta: {
+      hideInMenu: true,
+    },
+  },
 ];
