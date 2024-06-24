@@ -1,32 +1,32 @@
+// initial state
 import { StoreOptions } from "vuex";
+import ACCESS_ENUM from "@/access/accessEnum";
+import { UserControllerService } from "../../generated";
 
 export default {
   namespaced: true,
-  // initial state
-  //state：存储的状态信息
   state: () => ({
     loginUser: {
       userName: "未登录",
     },
   }),
-
-  // getters
-  getters: {},
-
-  // mutations
-  //定义了对变量进行增删改的方法
+  actions: {
+    async getLoginUser({ commit, state }, payload) {
+      // 从远程请求获取登录信息
+      const res = await UserControllerService.getLoginUserUsingGet();
+      if (res.code === 0) {
+        commit("updateUser", res.data);
+      } else {
+        commit("updateUser", {
+          ...state.loginUser,
+          userRole: ACCESS_ENUM.NOT_LOGIN,
+        });
+      }
+    },
+  },
   mutations: {
     updateUser(state, payload) {
       state.loginUser = payload;
-    },
-  },
-
-  // actions
-  //执行异步操作并且触发mutation的更改（调用mutation）
-  actions: {
-    getLoginUser({ commit, state }, payload) {
-      // todo 远程获取登录信息
-      commit("updateUser", { userName: "xxj" });
     },
   },
 } as StoreOptions<any>;
