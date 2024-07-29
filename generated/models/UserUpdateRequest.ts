@@ -1,7 +1,8 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+
 export type UserUpdateRequest = {
     id?: number;
     userAvatar?: string;
@@ -9,4 +10,3 @@ export type UserUpdateRequest = {
     userProfile?: string;
     userRole?: string;
 };
-

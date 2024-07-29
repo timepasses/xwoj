@@ -1,7 +1,8 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+
 export type UserQueryRequest = {
     current?: number;
     id?: number;
@@ -14,4 +15,3 @@ export type UserQueryRequest = {
     userProfile?: string;
     userRole?: string;
 };
-

@@ -1,42 +1,48 @@
 <template>
-  <div id="basiclayout">
-    <a-layout style="height: 400px">
+  <div id="basicLayout">
+    <a-layout style="min-height: 100vh">
       <a-layout-header class="header">
         <GlobalHeader />
       </a-layout-header>
       <a-layout-content class="content">
         <router-view />
       </a-layout-content>
-      <a-layout-footer class="footer">学习基</a-layout-footer>
+      <a-layout-footer class="footer">
+        <a target="_blank"> xw </a>
+      </a-layout-footer>
     </a-layout>
   </div>
 </template>
-<style>
-#basiclayout {
+
+<style scoped>
+#basicLayout {
 }
 
-#basiclayout .header {
-  background: aqua;
-  color: #42b983;
+#basicLayout .header {
   margin-bottom: 16px;
   box-shadow: #eee 1px 1px 5px;
 }
 
-#basiclayout .content {
-  background: linear-gradient(to right, #eee, #0000ff);
+#basicLayout .content {
+  background: linear-gradient(to right, #fefefe, #fff);
   margin-bottom: 16px;
+  padding: 20px;
 }
 
-#basiclayout .footer {
-  background: antiquewhite;
+#basicLayout .footer {
+  background: #efefef;
   padding: 16px;
-  position: absolute;
+  position: sticky;
   bottom: 0;
   left: 0;
   right: 0;
   text-align: center;
 }
 </style>
-<script setup lang="ts">
-import GlobalHeader from "@/components/GlobalHeader.vue";
+<script>
+import GlobalHeader from "@/components/GlobalHeader";
+
+export default {
+  components: { GlobalHeader },
+};
 </script>

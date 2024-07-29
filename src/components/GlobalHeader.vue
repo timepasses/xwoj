@@ -1,14 +1,5 @@
 <template>
-  <a-row
-    id="globalHeader"
-    class="grid-demo"
-    style="margin-bottom: 16px"
-    align="center"
-    :wrap="false"
-  >
-    <a-col flex="100px">
-      <div>100px</div>
-    </a-col>
+  <a-row id="globalHeader" align="center" :wrap="false">
     <a-col flex="auto">
       <a-menu
         mode="horizontal"
@@ -21,8 +12,8 @@
           disabled
         >
           <div class="title-bar">
-            <img class="logo" src="../assets/oj-logo.jpg" />
-            <div class="title">XXJ-OJ</div>
+            <img class="logo" src="../assets/oj-logo.svg" />
+            <div class="title">XW OJ</div>
           </div>
         </a-menu-item>
         <a-menu-item v-for="item in visibleRoutes" :key="item.path">
@@ -31,13 +22,16 @@
       </a-menu>
     </a-col>
     <a-col flex="100px">
-      <div>{{ store.state.user?.loginUser?.userName ?? "未登录" }}</div>
+      <div>
+        {{ store.state.user?.loginUser?.userName ?? "未登录" }}
+      </div>
     </a-col>
   </a-row>
 </template>
+
 <script setup lang="ts">
-import { routes } from "@/router/routes";
-import { useRouter } from "vue-router";
+import { routes } from "../router/routes";
+import { useRoute, useRouter } from "vue-router";
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
 import checkAccess from "@/access/checkAccess";
@@ -61,6 +55,7 @@ const visibleRoutes = computed(() => {
     return true;
   });
 });
+
 // 默认主页
 const selectedKeys = ref(["/"]);
 
@@ -69,12 +64,14 @@ router.afterEach((to, from, failure) => {
   selectedKeys.value = [to.path];
 });
 
+console.log();
+
 setTimeout(() => {
   store.dispatch("user/getLoginUser", {
-    userName: "xw管理员",
+    userName: "XW管理员",
     userRole: ACCESS_ENUM.ADMIN,
   });
-}, 5000);
+}, 3000);
 
 const doMenuClick = (key: string) => {
   router.push({
@@ -83,7 +80,6 @@ const doMenuClick = (key: string) => {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .title-bar {
   display: flex;
@@ -91,8 +87,8 @@ const doMenuClick = (key: string) => {
 }
 
 .title {
-  color: #42b983;
-  margin-left: 18px;
+  color: #444;
+  margin-left: 16px;
 }
 
 .logo {

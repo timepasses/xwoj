@@ -3,7 +3,7 @@
     <a-layout style="min-height: 100vh">
       <a-layout-header class="header">
         <a-space>
-          <img src="../assets/oj-logo.jpg" class="logo" />
+          <img src="../assets/oj-logo.svg" class="logo" />
           <div>XW OJ</div>
         </a-space>
       </a-layout-header>
@@ -11,7 +11,7 @@
         <router-view />
       </a-layout-content>
       <a-layout-footer class="footer">
-        <a href="https://xxw.icu" target="_blank"> xiangwu </a>
+        <a target="_blank"> xw </a>
       </a-layout-footer>
     </a-layout>
   </div>
