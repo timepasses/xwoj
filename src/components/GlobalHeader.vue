@@ -12,7 +12,7 @@
           disabled
         >
           <div class="title-bar">
-            <img class="logo" src="../assets/oj-logo.svg" />
+            <img class="logo" src="../assets/oj-logo.jpg" />
             <div class="title">XW OJ</div>
           </div>
         </a-menu-item>
@@ -22,7 +22,7 @@
       </a-menu>
     </a-col>
     <a-col flex="100px">
-      <div>
+      <div @click="handleLoginClick">
         {{ store.state.user?.loginUser?.userName ?? "未登录" }}
       </div>
     </a-col>
@@ -39,6 +39,11 @@ import ACCESS_ENUM from "@/access/accessEnum";
 
 const router = useRouter();
 const store = useStore();
+
+// 未登录时跳转到登录页面
+const handleLoginClick = () => {
+  router.push("/user/login"); // 跳转到该页面
+};
 
 // 展示在菜单的路由数组
 const visibleRoutes = computed(() => {
