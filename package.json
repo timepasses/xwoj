@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --port 8090",
+    "serve": "vue-cli-service serve --port 8091",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -11,8 +11,11 @@
     "@bytemd/plugin-gfm": "^1.21.0",
     "@bytemd/plugin-highlight": "^1.21.0",
     "@bytemd/vue-next": "^1.21.0",
+    "@vueuse/core": "^13.1.0",
     "axios": "^1.4.0",
     "core-js": "^3.8.3",
+    "less": "^4.3.0",
+    "less-loader": "^12.3.0",
     "moment": "^2.29.4",
     "monaco-editor": "^0.41.0",
     "monaco-editor-webpack-plugin": "^7.1.0",
