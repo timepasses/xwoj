@@ -21,10 +21,34 @@
         </a-menu-item>
       </a-menu>
     </a-col>
-    <a-col flex="100px">
-      <div @click="handleLoginClick">
-        {{ store.state.user?.loginUser?.userName ?? "未登录" }}
-      </div>
+    <!--    <a-col flex="100px">
+          <div @click="handleLoginClick">
+            {{ store.state.user?.loginUser?.userName ?? "未登录（点此登录）" }}
+          </div>
+          <a-button size="small" @click="handleLogout">注销</a-button>
+        </a-col>-->
+    <a-col
+      flex="150px"
+      style="
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        justify-content: flex-end;
+      "
+    >
+      <template
+        v-if="store.state.user?.loginUser?.userRole !== ACCESS_ENUM.NOT_LOGIN"
+      >
+        <div style="cursor: default">
+          {{ store.state.user?.loginUser?.userName }}
+        </div>
+        <a-button size="small" @click="handleLogout">注销</a-button>
+      </template>
+      <template v-else>
+        <div @click="handleLoginClick" style="cursor: pointer">
+          未登录（点此登录）
+        </div>
+      </template>
     </a-col>
   </a-row>
 </template>
@@ -36,6 +60,20 @@ import { computed, ref } from "vue";
 import { useStore } from "vuex";
 import checkAccess from "@/access/checkAccess";
 import ACCESS_ENUM from "@/access/accessEnum";
+
+import { UserControllerService } from "../../generated";
+import message from "@arco-design/web-vue/es/message";
+
+const handleLogout = async () => {
+  const res = await UserControllerService.userLogoutUsingPost();
+  if (res.code === 0) {
+    message.success("注销成功");
+    await store.dispatch("user/getLoginUser"); // 清空用户状态
+    router.push("/user/login"); // 跳转登录页
+  } else {
+    message.error("注销失败：" + res.message);
+  }
+};
 
 const router = useRouter();
 const store = useStore();

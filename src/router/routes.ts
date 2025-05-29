@@ -83,14 +83,7 @@ export const routes: Array<RouteRecordRaw> = [
     name: "主页",
     component: QuestionsView,
   },
-  // {
-  //   path: "/hide",
-  //   name: "隐藏页面",
-  //   component: HomeView,
-  //   meta: {
-  //     hideInMenu: true,
-  //   },
-  // },
+
   {
     path: "/noAuth",
     name: "无权限",
@@ -99,6 +92,14 @@ export const routes: Array<RouteRecordRaw> = [
       hideInMenu: true,
     },
   },
+  // {
+  //   path: "/hide",
+  //   name: "隐藏页面",
+  //   component: HomeView,
+  //   meta: {
+  //     hideInMenu: true,
+  //   },
+  // },
   // {
   //   path: "/admin",
   //   name: "管理员可见",

@@ -18,9 +18,14 @@
         />
       </a-form-item>
       <a-form-item>
-        <a-button type="primary" html-type="submit" style="width: 120px">
-          登录
-        </a-button>
+        <div style="display: flex; gap: 120px">
+          <a-button type="primary" html-type="submit" style="flex: 1">
+            登录
+          </a-button>
+          <a-button type="outline" @click="goToRegister" style="flex: 1">
+            注册
+          </a-button>
+        </div>
       </a-form-item>
     </a-form>
   </div>
@@ -48,6 +53,10 @@ const store = useStore();
  * 提交表单
  * @param data
  */
+const goToRegister = () => {
+  router.push("/user/register");
+};
+
 const handleSubmit = async () => {
   const res = await UserControllerService.userLoginUsingPost(form);
   // 登录成功，跳转到主页

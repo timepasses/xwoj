@@ -118,12 +118,40 @@ const doSubmit = async () => {
     ...form.value,
     questionId: question.value.id,
   });
+
+  if (res.code === 0) {
+    // 判断判题结果
+    const resultMessage = res.message;
+
+    if (resultMessage === "Accepted") {
+      message.success("🎉 答案正确：Accepted");
+    } else if (resultMessage === "Wrong Answer") {
+      message.warning("❌ 答案错误：Wrong Answer");
+    } else if (resultMessage === null) {
+      message.error("❗ 编译错误");
+    } else {
+      message.info(`结果：${resultMessage}`);
+    }
+  } else {
+    message.error("提交失败，" + res.message);
+  }
+};
+
+/*const doSubmit = async () => {
+  if (!question.value?.id) {
+    return;
+  }
+
+  const res = await QuestionControllerService.doQuestionSubmitUsingPost({
+    ...form.value,
+    questionId: question.value.id,
+  });
   if (res.code === 0) {
     message.success("提交成功");
   } else {
     message.error("提交失败," + res.message);
   }
-};
+};*/
 
 /**
  * 页面加载时，请求数据

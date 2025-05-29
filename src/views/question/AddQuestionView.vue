@@ -6,7 +6,11 @@
         <a-input v-model="form.title" placeholder="请输入标题" />
       </a-form-item>
       <a-form-item field="tags" label="标签">
-        <a-input-tag v-model="form.tags" placeholder="请选择标签" allow-clear />
+        <a-input-tag
+          v-model="form.tags"
+          placeholder="请输入标签（回车确认）"
+          allow-clear
+        />
       </a-form-item>
       <a-form-item field="content" label="题目内容">
         <MdEditor :value="form.content" :handle-change="onContentChange" />
